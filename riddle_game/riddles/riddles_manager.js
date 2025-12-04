@@ -6,7 +6,7 @@ export function askRiddle(riddleObj) {
   while (properAnswer) {
     console.log(riddleObj.id);
     console.log(riddleObj.name);
-    console.log(riddleObj.difficulty);
+    console.log(riddleObj.difficultyName);
     console.log(riddleObj.taskDescription);
     const proper = readline.question("riddleObj.answers");
     if (proper == riddleObj.correctAnswer) {
