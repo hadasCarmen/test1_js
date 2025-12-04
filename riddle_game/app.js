@@ -1,30 +1,18 @@
+import { createPlayer, addSolveTime, showStats } from "./funcions.js";
+import allRiddles from "./riddles/all_riddles.js";
+import { askRiddle, measureSolveTime } from "./riddles/riddles_manager.js";
 import readline from "readline-sync";
-// import riddles from "./riddles/all_riddles.js";
-const name = readline.question("What is your name?");
-console.log(`Hello, ${name}!`);
+function mainGame() {
+  console.log("welcome to the riddle game");
+  const name = readline.question("What is your name?");
+  console.log(`Hello, ${name}!`);
+  const player = createPlayer(name);
 
-function createPlayer(name) {
-  const player1 = {
-    name: name,
-    timesSeconds: [],
-  };
+  allRiddles.forEach((riddleObj) => {
+    let duration = measureSolveTime(riddleObj);
+    addSolveTime(player, duration);
+    showStats(player);
+  });
 }
 
-function addSolveTime(player, seconds) {
-  player.timesSeconds.push(seconds);
-  console.log(player);
-}
-// addSolveTime({name :'el',
-//     timesSeconds:[]
-// },10)
-
-function showStats(player) {
-  const array1 = player.timesSeconds;
-  const sum = array1.reduce((acc, val) => acc + val, 0);
-  const avg = sum / array1.length;
-  console.log(sum);
-  console.log(avg);
-}
-// showStats({name :'el',
-//     timesSeconds:[1,2,3,4]
-// })
+mainGame();
