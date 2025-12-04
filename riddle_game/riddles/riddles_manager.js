@@ -8,7 +8,7 @@ export function askRiddle(riddleObj) {
     console.log(riddleObj.name);
     console.log(riddleObj.difficultyName);
     console.log(riddleObj.taskDescription);
-    const proper = readline.question("riddleObj.answers");
+    const proper = readline.question(`${riddleObj.answers}`);
     if (proper == riddleObj.correctAnswer) {
       properAnswer = false;
     }
